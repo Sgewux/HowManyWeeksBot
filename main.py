@@ -51,6 +51,8 @@ class Replier:
 		self.replies =(
 			':v',
 			':O',
+			':(',
+			':)',
 			'When I find myself in times of trouble, Mother Mary comes to me.\nSpeaking words of wisdom, let it be...',
 			'You never thought I\'d ever be Something you want, something you need...',
 			'I\'m naming the voices in my head...',
@@ -83,6 +85,18 @@ class Replier:
 				return False
 
 
+	def is_not_reply(self, mention):
+		'''This function will return true if the mention isn't a reply'''
+		
+		if mention.in_reply_to_status_id == None:
+
+			return True
+
+		else: 
+
+			return False
+
+
 	def update_id(self, mention):
 		'''This function updates the las_mention_id document with the current las mention's id after answer and replied it'''
 		with open('last_mention_id.txt', 'w') as f:
@@ -109,12 +123,12 @@ if __name__ == '__main__':
 
 	while True:
 
-		print('checking')
+		
 		schedule.run_pending()
-		print('searching')
+		
 		mention = replier.get_last_mention()
 
-		if replier.is_new_mention(mention) == True: #If it's a new mention
+		if replier.is_new_mention(mention) == True and replier.is_not_reply(mention) == True: #If it's a new mention and aint a reply
 
 			replier.reply_to_last_mention(mention)
 			replier.like_mention(mention)
@@ -122,4 +136,3 @@ if __name__ == '__main__':
 	
 		time.sleep(60)
 
-	
