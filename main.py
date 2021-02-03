@@ -1,17 +1,13 @@
+from keys_and_tokens import Api_key, Api_secret_key, Access_token, Access_token_secret
 import tweepy
 import datetime
 import time
 import random
 import schedule
 
-#Tokens
-api_key = 'F4TIkczr6nSLVWKteeB2YTeHK'
-api_secret_key = 'rUvvGkT2PMKcbjg0NUxGoyp3B36NlMqPKzQ2F4Ky3RUM4lFHLV'
-access_token = '1345045932962947073-hESgm0OX8MhJAxxG9fxBnO29UkJP5R'
-access_token_secret = 'MihuK5mjsUgmKCIYG3ByZ8VYWRi8Fg8DTm9MayycjJlxS'
 
-auth = tweepy.OAuthHandler(api_key, api_secret_key)
-auth.set_access_token(access_token, access_token_secret)
+auth = tweepy.OAuthHandler(Api_key, Api_secret_key)
+auth.set_access_token(Access_token, Access_token_secret)
 
 my_api = tweepy.API(auth, wait_on_rate_limit= True)
 
@@ -36,7 +32,7 @@ class Poster:
 
 		else:
 
-			return f'Just {weeks_to_finish} weeks to finish the {current_year}! \nOr in Colombian words "Se vino diciembre hpta!"'
+			return f'Just {weeks_to_finish} weeks to finish the {current_year}! \nOr in Colombian words "Se vino diciembre hpta!"' #Colombian joke
 
 
 	def post(self):
@@ -56,7 +52,7 @@ class Replier:
 			'When I find myself in times of trouble, Mother Mary comes to me.\nSpeaking words of wisdom, let it be...',
 			'You never thought I\'d ever be Something you want, something you need...',
 			'I\'m naming the voices in my head...',
-			'Oh gloria inmarcesible Oh júbilo inmortal... ',
+			'Oh gloria inmarcesible Oh júbilo inmortal... ',		#Random replies
 			'Do u know where i can buy some bitcoins?',
 			'A prokaryotic cell is a type of cell that does not have a true nucleus or membrane-bound organelles.',
 			'A prokaryotic cell is a type of cell that does not have a true nucleus or membrane-bound organelles.',
